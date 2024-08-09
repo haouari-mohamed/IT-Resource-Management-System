@@ -1,0 +1,114 @@
+@startuml
+abstract class Personne {
+  -Long id
+  -String nom
+  -String email
+  -String password
+  +getId(): Long
+  +setId(Long id): void
+  +getNom(): String
+  +setNom(String nom): void
+  +getEmail(): String
+  +setEmail(String email): void
+  +getPassword(): String
+  +setPassword(String password): void
+}
+
+class Utilisateur {
+  +signalerPanne(Panne panne): void
+  +creerTicket(TicketSupport ticket): void
+}
+
+class AdministrateurIT {
+  +gererEquipement(): void
+  +gererPannes(): void
+  +gererTickets(): void
+  +genererRapport(): Report
+  +recevoirNotification(Notification notification): void
+}
+
+class TechnicienIT {
+  +traiterTicket(TicketSupport ticket): void
+}
+
+class Panne {
+  -Long idPanne
+  -String description
+  -Date dateSignalement
+  -Date dateResolution
+  -String etat
+  +getIdPanne(): Long
+  +setIdPanne(Long idPanne): void
+  +getDescription(): String
+  +setDescription(String description): void
+  +getDateSignalement(): Date
+  +setDateSignalement(Date dateSignalement): void
+  +getDateResolution(): Date
+  +setDateResolution(Date dateResolution): void
+  +getEtat(): String
+  +setEtat(String etat): void
+}
+
+class Equipement {
+  -Long idE
+  -String nom
+  -String description
+  -String etat
+  +getIdE(): Long
+  +setIdE(Long idE): void
+  +getNom(): String
+  +setNom(String nom): void
+  +getDescription(): String
+  +setDescription(String description): void
+  +getEtat(): String
+  +setEtat(String etat): void
+}
+
+class TicketSupport {
+  -Long idT
+  -String description
+  -String etat
+  -Date dateResolution
+  -Date dateCreation
+  +getIdT(): Long
+  +setIdT(Long idT): void
+  +getDescription(): String
+  +setDescription(String description): void
+  +getEtat(): String
+  +setEtat(String etat): void
+  +getDateResolution(): Date
+  +setDateResolution(Date dateResolution): void
+  +getDateCreation(): Date
+  +setDateCreation(Date dateCreation): void
+}
+
+class Report {
+  -Long idReport
+  -String type
+  -Date dateGeneration
+  -String contenu
+  +genererRapportEquipements(): void
+  +genererRapportPannes(): void
+  +genererRapportPerformances(): void
+}
+
+class Notification {
+  -Long idNotification
+  -String message
+  -Date dateEnvoi
+  -Boolean lu
+  +envoyerNotification(): void
+  +marquerCommeLu(): void
+}
+
+Personne <|-- Utilisateur
+Personne <|-- AdministrateurIT
+Personne <|-- TechnicienIT
+
+Utilisateur "1" --> "0..*" Panne : signaler
+Utilisateur "1" --> "0..*" TicketSupport : créer
+TechnicienIT "1" --> "0..*" TicketSupport : attribuer
+Equipement "1" --> "0..*" Panne : contenir
+AdministrateurIT "1" --> "0..*" Report : generer
+AdministrateurIT "1" --> "0..*" Notification : recevoir
+@enduml
