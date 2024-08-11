@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './compenents/login/login/login.component';
 import { TechnicianComponent } from './compenents/technician/technician.component';
 import { UserComponent } from './compenents/user/user.component';
-import { DashboardComponent } from './compenents/login/dashboard/dashboard.component';
+import { DashboardComponent } from './compenents/dashboard/dashboard.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'technician', component: TechnicianComponent },
-  {path: 'user', component:UserComponent},
+  { path: 'tech', component: TechnicianComponent },
+  { path: 'use', component: UserComponent },
 
   { path: '**', redirectTo: '/login' } 
 ];

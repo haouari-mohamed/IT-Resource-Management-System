@@ -7,14 +7,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './compenents/login/login/login.component';
-import { DashboardComponent } from './compenents/login/dashboard/dashboard.component';
+import { DashboardComponent } from './compenents/dashboard/dashboard.component';
 import { UserComponent } from './compenents/user/user.component';
+import { AppRoutingModule } from './app-routing.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  // Add more routes here
+ 
 ];
 
 @NgModule({
@@ -22,14 +23,16 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    UserComponent
-    // Other components
+    UserComponent,
+  
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule, // Add HttpClientModule here
-    RouterModule.forRoot(routes)
+    HttpClientModule, 
+    RouterModule.forRoot(routes),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

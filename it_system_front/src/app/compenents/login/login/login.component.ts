@@ -14,22 +14,28 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   login(): void {
-    this.authService.login(this.username, this.password).subscribe(response => {
-      this.authService.saveToken(response.token);
-      this.authService.saveRole(response.role);
-      console.log(response);
-
-    
-      if (response.role === 'TECHNICIAN') {
-        this.router.navigate(['/technician']); 
-        console.log("hada tech")
-      }  if (response.role === 'USER') {
-        this.router.navigate(['/user']); 
-        console.log("hada user")
-      } if (response.role === 'ADMIN')  {
-        this.router.navigate(['/dashboard']);
-        console.log("hada admin ")
-      }
-    });
-  }
-}
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
+        this.authService.saveToken(response.token);
+        this.authService.saveRole(response.role);
+        console.log(response);
+  
+        switch(response.role) {
+          case 'TECHNICIAN':
+            this.router.navigate(['/tech']);
+            console.log("Navigating to technician");
+            break;
+          case 'USER':
+            this.router.navigate(['/use']);
+            console.log("Navigating to user");
+            break;
+          case 'ADMIN':
+            this.router.navigate(['/dashboard']);
+            console.log("Navigating to admin dashboard");
+            break;
+          default:
+            console.log("Unknown role:", response.role);
+        }
+      },
+    );
+  }}
