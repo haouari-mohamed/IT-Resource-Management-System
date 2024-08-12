@@ -3,11 +3,13 @@ package com.example.It.mangemenet.system.controller;
 import com.example.It.mangemenet.system.model.TicketDeSupport;
 import com.example.It.mangemenet.system.service.TicketDeSupportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketDeSupportController {
@@ -30,6 +32,7 @@ public class TicketDeSupportController {
     @GetMapping("/{id}")
     public ResponseEntity<TicketDeSupport> getTicketDeSupportById(@PathVariable Long id) {
         TicketDeSupport ticket = ticketDeSupportService.getTicketDeSupportById(id);
+
         return ResponseEntity.ok(ticket);
     }
 

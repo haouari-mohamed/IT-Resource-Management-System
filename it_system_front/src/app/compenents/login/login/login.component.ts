@@ -22,7 +22,7 @@ export class LoginComponent {
   
         switch(response.role) {
           case 'TECHNICIAN':
-            this.router.navigate(['/tech']);
+            this.router.navigate(['/technician']);
             console.log("Navigating to technician");
             break;
           case 'USER':

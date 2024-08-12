@@ -1,1 +1,45 @@
-<h1>welcome to user area</h1>
+<!-- src/app/components/user/user.component.html -->
+
+<div class="container">
+    <!-- Ticket Creation Form -->
+    <div class="ticket-form">
+      <h2>Create a New Ticket</h2>
+      <form (ngSubmit)="createTicket()" #ticketForm="ngForm">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" [(ngModel)]="newTicket.description" required></textarea>
+        </div>
+        <button type="submit" [disabled]="!ticketForm.form.valid" class="btn btn-primary">Create Ticket</button>
+      </form>
+    </div>
+  
+    <!-- Ticket List -->
+    <div class="ticket-list">
+      <h2>Your Tickets</h2>
+      <ul>
+        <li *ngFor="let ticket of tickets" (click)="viewTicket(ticket.id)">
+          <div class="ticket-summary">
+            <p><strong>ID:</strong> {{ ticket.id }}</p>
+            <p><strong>Description:</strong> {{ ticket.description }}</p>
+            <p><strong>Status:</strong> {{ ticket.etat }}</p>
+            <p><strong>Created On:</strong> {{ ticket.dateCreation | date: 'short' }}</p>
+            <p *ngIf="ticket.dateResolution"><strong>Resolved On:</strong> {{ ticket.dateResolution | date: 'short' }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Ticket Details Modal -->
+    <div class="modal" *ngIf="selectedTicket">
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h2>Ticket Details</h2>
+        <p><strong>ID:</strong> {{ selectedTicket.id }}</p>
+        <p><strong>Description:</strong> {{ selectedTicket.description }}</p>
+        <p><strong>Status:</strong> {{ selectedTicket.etat }}</p>
+        <p><strong>Created On:</strong> {{ selectedTicket.dateCreation | date: 'short' }}</p>
+        <p *ngIf="selectedTicket.dateResolution"><strong>Resolved On:</strong> {{ selectedTicket.dateResolution | date: 'short' }}</p>
+      </div>
+    </div>
+  </div>
+  

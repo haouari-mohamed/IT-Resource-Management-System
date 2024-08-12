@@ -7,6 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+
+  
+  private currentUserId: number | null = null;
+  
   saveToken(token: any) {
     localStorage.setItem('token',token)
   }
@@ -24,4 +28,30 @@ export class AuthService {
 
     return this.http.post(this.apiUrl, { username, password });
   }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  setCurrentUserId(id: number) {
+    this.currentUserId = id;
+    localStorage.setItem('currentUserId', id.toString());
+  }
+
+  getCurrentUserId(): number {
+    if (this.currentUserId === null) {
+      const storedId = localStorage.getItem('currentUserId');
+      this.currentUserId = storedId ? parseInt(storedId, 10) : null;
+    }
+    return this.currentUserId as number;
+  }
+
 }
