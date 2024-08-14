@@ -1,10 +1,30 @@
-<!-- 
-<h2>Technician Dashboard</h2>
 
-<h3>Support Tickets</h3>
-<ul>
-  <li *ngFor="let ticket of tickets">
-    {{ ticket.title }} - {{ ticket.status }}
-    <button (click)="assignTicket(ticket.id)">Assign to Me</button>
-  </li>
-</ul>  -->
+  <section class="assigned-tickets" *ngIf="currentTechnicianId">
+    <h2>Assigned Tickets</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ticket of assignedTickets">
+          <td>{{ticket.id}}</td>
+          <td>{{ticket.description}}</td>
+          <td>{{ticket.etat}}</td>
+          <td>
+            <select (change)="onStatusChange($event, ticket.id)">
+              <option value="">Change status...</option>
+              <option *ngFor="let status of etatTicketOptions" [value]="status" [selected]="status === ticket.etat">
+                {{status}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+

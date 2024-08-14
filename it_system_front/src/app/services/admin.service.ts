@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,27 +11,36 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  getDashboardStats(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/admin/stats`);
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token'); 
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
   }
 
+/* 
+  getDashboardStats(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/admin/stats`, { headers: this.getHeaders() });
+  } */
+
   getEquipmentList(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/equipements`);
+    return this.http.get(`${this.apiUrl}/equipements`, { headers: this.getHeaders() });
   }
 
   getTicketList(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/tickets`);
+    return this.http.get(`${this.apiUrl}/tickets, { headers: this.getHeaders() }`);
   }
 
   getUserList(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/utilisateurs`);
+    return this.http.get(`${this.apiUrl}/utilisateurs`, { headers: this.getHeaders() });
   }
 
   getNotificationList(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/notifications`);
+    return this.http.get(`${this.apiUrl}/notifications`, { headers: this.getHeaders() });
   }
 
   getBreakdownList(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/pannes`);
+    return this.http.get(`${this.apiUrl}/pannes`,  { headers: this.getHeaders() });
   }
 }

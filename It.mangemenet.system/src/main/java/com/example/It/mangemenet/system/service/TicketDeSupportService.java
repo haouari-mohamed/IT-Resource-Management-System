@@ -46,6 +46,18 @@ public class TicketDeSupportService {
         return ticketDeSupportRepository.save(ticket);
     }
 
+    public TicketDeSupport updateTicketDeSupport(Long id, TicketDeSupport updatedTicket) {
+        TicketDeSupport existingTicket = ticketDeSupportRepository.findById(id).orElse(null);
+        if (existingTicket == null) {
+            throw new RuntimeException("Ticket not found");
+        }
+        existingTicket.setDescription(updatedTicket.getDescription());
+        existingTicket.setEtat(updatedTicket.getEtat());
+        existingTicket.setTechnicien(updatedTicket.getTechnicien());
+
+        return ticketDeSupportRepository.save(existingTicket);
+    }
+
     public void deleteTicketDeSupport(Long id) {
         ticketDeSupportRepository.deleteById(id);
     }

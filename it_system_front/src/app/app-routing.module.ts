@@ -7,8 +7,8 @@ import { DashboardComponent } from './compenents/login/dashboard/dashboard.compo
  
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'tech', component: TechnicianComponent },
   { path: 'use', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TicketDeSupport } from '../model/global.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +38,9 @@ export class TicketDeSupportService {
   deleteTicketDeSupport(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
+  updateTicket(id: number, ticket: TicketDeSupport): Observable<TicketDeSupport> {
+    return this.http.put<TicketDeSupport>(`${this.apiUrl}/${id}`, ticket, { headers: this.getHeaders() });
+    console.log("the update is working well")
+  }
+  
 }

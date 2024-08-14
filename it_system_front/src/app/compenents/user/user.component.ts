@@ -1,7 +1,7 @@
 // src/app/components/user/user.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { TicketDeSupport } from 'src/app/model/user.model';
+import { TicketDeSupport } from 'src/app/model/global.model';
 import { TicketDeSupportService } from 'src/app/services/ticket-de-support.service';
 
 @Component({
@@ -23,8 +23,8 @@ export class UserComponent implements OnInit {
   loadTickets() {
     this.ticketService.getAllTicketsDeSupport().subscribe(
       (data) => this.tickets = data,
-      (error) => console.error('Error loading tickets', error)
-    );
+    
+    )
   }
 
   createTicket() {
@@ -33,6 +33,7 @@ export class UserComponent implements OnInit {
         console.log('Ticket created successfully');
         this.loadTickets();
         this.newTicket = { description: '' };
+        console.log("ticket create with succes")
       },
       (error) => console.error('Error creating ticket', error)
     );

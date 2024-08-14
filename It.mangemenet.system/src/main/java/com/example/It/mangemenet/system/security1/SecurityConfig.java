@@ -33,13 +33,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .requestMatchers("/auth").permitAll()
-                                .requestMatchers("/api/equipements/**").permitAll()
+                                .requestMatchers("/api/equipements/**").hasRole("ADMIN")
                                 // Ticket management
                                 .requestMatchers(GET, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN", "USER")
                                 .requestMatchers(POST, "/api/tickets").hasRole("USER")
                                 .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
                                 .requestMatchers(DELETE, "/api/tickets/**").hasRole("ADMIN")
-                                // Other endpoints
+
                                 .requestMatchers("/api/utilisateurs/**").hasRole("ADMIN")
                                 .requestMatchers("/api/notifications/**").hasRole("ADMIN")
                                 .requestMatchers("/api/pannes/**").hasRole("ADMIN")

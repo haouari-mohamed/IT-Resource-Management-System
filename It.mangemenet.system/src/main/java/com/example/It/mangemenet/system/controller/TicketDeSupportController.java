@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketDeSupportController {
@@ -42,6 +41,13 @@ public class TicketDeSupportController {
             @RequestParam Long technicianId) {
         TicketDeSupport updatedTicket = ticketDeSupportService.assignToTechnician(id, technicianId);
         return ResponseEntity.ok(updatedTicket);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<TicketDeSupport> updateTicketDeSupport(
+            @PathVariable Long id,
+            @RequestBody TicketDeSupport updatedTicket) {
+        TicketDeSupport ticket = ticketDeSupportService.updateTicketDeSupport(id, updatedTicket);
+        return ResponseEntity.ok(ticket);
     }
 
     @DeleteMapping("/{id}")
