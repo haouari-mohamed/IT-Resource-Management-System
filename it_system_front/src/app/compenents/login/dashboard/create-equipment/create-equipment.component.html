@@ -1,0 +1,24 @@
+<section class="create-equipment">
+    <h2>Create New Equipment</h2>
+    <form (ngSubmit)="createEquipment()">
+      <div>
+        <label for="equipmentName">Name:</label>
+        <input type="text" id="equipmentName" [(ngModel)]="newEquipment.nom" name="nom" required>
+      </div>
+      <div>
+        <label for="equipmentDescription">Description:</label>
+        <textarea id="equipmentDescription" [(ngModel)]="newEquipment.description" name="description" required></textarea>
+      </div>
+      <div>
+        <label for="equipmentState">State:</label>
+        <select id="equipmentState" [(ngModel)]="newEquipment.etat" name="etat" required>
+          <option *ngFor="let state of etatOptions" [value]="state">{{state}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="equipmentDate">Acquisition Date:</label>
+        <input type="date" id="equipmentDate" [(ngModel)]="newEquipment.dateAcquisition" name="dateAcquisition" required>
+      </div>
+      <button type="submit">Create Equipment</button>
+    </form>
+  </section>

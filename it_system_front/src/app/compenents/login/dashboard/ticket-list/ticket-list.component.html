@@ -1,0 +1,62 @@
+<!-- ticket-list.component.html -->
+<section class="tickets">
+  <h2>Support Tickets</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Creation Date</th>
+        <th>Resolution Date</th>
+        <th>User</th>
+        <th>Technician</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ticket.id}}</td>
+        <td>{{ticket.description}}</td>
+        <td>{{ticket.etat}}</td>
+        <td>{{ticket.dateCreation | date}}</td>
+        <td>{{ticket.dateResolution | date}}</td>
+       <!--  <td>{{ticket.utilisateur.username || 'N/A'}}</td> -->
+        <td>{{ticket.technicien?.username || 'Not assigned'}}</td>
+        <td>
+          <button (click)="deleteTicket(ticket.id)">Delete</button>
+          <button (click)="openUpdatePopup(ticket)">Update</button>
+          <select (change)="assignTicket(ticket.id, $event)">
+            <option value="">Assign to...</option>
+            <option *ngFor="let tech of technicians" [value]="tech.id">{{tech.username}}</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Update Popup -->
+<div class="popup" *ngIf="showUpdatePopup && selectedTicket">
+  <div class="popup-content">
+    <h2>Update Ticket</h2>
+    <form (ngSubmit)="updateTicket()">
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="selectedTicket.description" name="description" ></textarea>
+      </div>
+      <div>
+        <label for="status">Status:</label>
+        <select id="status" [(ngModel)]="selectedTicket.etat" name="etat" >
+          <option *ngFor="let status of etatTicket | keyvalue" [value]="status.value">{{status.value}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="resolutionDate">Resolution Date:</label>
+        <input type="date" id="resolutionDate" [(ngModel)]="selectedTicket.dateResolution" name="dateResolution">
+      </div>
+      <button type="submit">Update Ticket</button>
+      <button type="button" (click)="closeUpdatePopup()">Cancel</button>
+    </form>
+  </div>
+</div>

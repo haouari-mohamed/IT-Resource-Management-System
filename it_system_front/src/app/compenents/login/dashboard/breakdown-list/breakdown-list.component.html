@@ -1,0 +1,28 @@
+<section class="breakdowns">
+    <h2>Existing Breakdowns</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Resolved</th>
+          <th>Equipment</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let breakdown of breakdowns">
+          <td>{{breakdown.id}}</td>
+          <td>{{breakdown.description}}</td>
+          <td>{{breakdown.datePanne | date}}</td>
+          <td>{{breakdown.resolu ? 'Yes' : 'No'}}</td>
+
+          <td>
+            <button (click)="deletePanne(breakdown.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  

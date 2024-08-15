@@ -1,0 +1,49 @@
+<div class="create-breakdown">
+    <h2>Create New Breakdown</h2>
+    <form (ngSubmit)="createBreakdown()">
+      <div>
+        <label for="description">Description:</label>
+        <input 
+          type="text" 
+          id="description" 
+          [(ngModel)]="newBreakdown.description" 
+          name="description" 
+          required>
+      </div>
+  
+      <div>
+        <label for="datePanne">Date:</label>
+        <input 
+          type="date" 
+          id="datePanne" 
+          [(ngModel)]="newBreakdown.datePanne" 
+          name="datePanne" 
+          required>
+      </div>
+  
+      <div>
+        <label for="resolu">Resolved:</label>
+        <input 
+          type="checkbox" 
+          id="resolu" 
+          [(ngModel)]="newBreakdown.resolu" 
+          name="resolu">
+      </div>
+  
+      <div>
+        <label for="equipement">Equipment:</label>
+        <select 
+          id="equipement" 
+          [(ngModel)]="newBreakdown.equipement" 
+          name="equipement" 
+          required>
+          <option *ngFor="let equipment of equipements" [ngValue]="equipment">
+            {{equipment.description}}
+          </option>
+        </select>
+      </div>
+  
+      <button type="submit">Create Breakdown</button>
+    </form>
+  </div>
+  

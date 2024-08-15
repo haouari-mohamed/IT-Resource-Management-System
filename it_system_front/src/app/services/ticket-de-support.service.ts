@@ -39,8 +39,9 @@ export class TicketDeSupportService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
   updateTicket(id: number, ticket: TicketDeSupport): Observable<TicketDeSupport> {
-    return this.http.put<TicketDeSupport>(`${this.apiUrl}/${id}`, ticket, { headers: this.getHeaders() });
-    console.log("the update is working well")
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<TicketDeSupport>(url, ticket, { headers: this.getHeaders() });
   }
+
   
 }

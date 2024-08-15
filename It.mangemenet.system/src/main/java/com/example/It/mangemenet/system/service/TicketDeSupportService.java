@@ -54,10 +54,14 @@ public class TicketDeSupportService {
         existingTicket.setDescription(updatedTicket.getDescription());
         existingTicket.setEtat(updatedTicket.getEtat());
         existingTicket.setTechnicien(updatedTicket.getTechnicien());
+        existingTicket.setDateResolution(updatedTicket.getDateResolution());
 
         return ticketDeSupportRepository.save(existingTicket);
     }
 
+    public List<TicketDeSupport> getTicketsByTechnicianId(Long technicianId) {
+        return ticketDeSupportRepository.findByTechnicienId(technicianId);
+    }
     public void deleteTicketDeSupport(Long id) {
         ticketDeSupportRepository.deleteById(id);
     }

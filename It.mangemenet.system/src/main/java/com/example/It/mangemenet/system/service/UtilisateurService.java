@@ -2,6 +2,7 @@ package com.example.It.mangemenet.system.service;
 
 import com.example.It.mangemenet.system.dto.UtilisateurDTO;
 import com.example.It.mangemenet.system.model.Utilisateur;
+import com.example.It.mangemenet.system.model.enums.Role;
 import com.example.It.mangemenet.system.repo.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class UtilisateurService {
         utilisateur.setUsername(utilisateurDTO.getUsername());
         utilisateur.setEmail(utilisateurDTO.getEmail());
         utilisateur.setPassword(utilisateurDTO.getPassword());
+        utilisateur.setRole(Role.USER);
 
         Utilisateur savedUtilisateur = utilisateurRepository.save(utilisateur);
 

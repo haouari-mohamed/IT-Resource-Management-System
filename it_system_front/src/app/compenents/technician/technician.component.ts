@@ -1,8 +1,5 @@
-// technician.component.ts
 import { Component, OnInit } from '@angular/core';
 import { EtatTicket } from 'src/app/model/global.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { TechnicianService } from 'src/app/services/technician.service';
 import { TechnicienITService } from 'src/app/services/technicien-it.service';
 import { TicketDeSupportService } from 'src/app/services/ticket-de-support.service';
 
@@ -13,8 +10,8 @@ import { TicketDeSupportService } from 'src/app/services/ticket-de-support.servi
 })
 export class TechnicianComponent implements OnInit {
   assignedTickets: any[] = [];
-  currentTechnicianId: number = 1; // This should be set dynamically based on logged-in user
-  etatTicketOptions: string[] = Object.values(EtatTicket); // Assuming you have an enum EtatTicket
+  currentTechnicianId: number = 6; 
+  etatTicketOptions: string[] = Object.values(EtatTicket); 
 
   constructor(
     private ticketDeSupportService: TicketDeSupportService,
@@ -22,16 +19,11 @@ export class TechnicianComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadDashboardData();
     this.loadAssignedTickets();
   }
 
-  loadDashboardData(): void {
-    // Load any other necessary data for the dashboard
-  }
-
   loadAssignedTickets(): void {
-    this.technicianService.getAssignedTickets().subscribe(
+    this.technicianService.getAssignedTickets(this.currentTechnicianId).subscribe(
       data => this.assignedTickets = data,
       error => console.error('Error fetching assigned tickets:', error)
     );
@@ -44,7 +36,7 @@ export class TechnicianComponent implements OnInit {
       this.ticketDeSupportService.updateTicket(ticketId, updatedTicket).subscribe(
         () => {
           console.log('Ticket status updated successfully');
-          this.loadAssignedTickets(); // Reload the assigned tickets
+          this.loadAssignedTickets(); 
         },
         error => console.error('Error updating ticket status:', error)
       );

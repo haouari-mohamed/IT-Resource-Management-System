@@ -7,16 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { TechnicianService } from './services/technician.service';
 import { LoginComponent } from './compenents/login/login/login.component'; 
 import { UserComponent } from './compenents/user/user.component'; 
 import { TechnicianComponent } from './compenents/technician/technician.component'; 
 
-import { AdminService } from './services/admin.service';
 import { DashboardComponent } from './compenents/login/dashboard/dashboard.component';
 import { TicketDeSupportService } from './services/ticket-de-support.service';
 import { PanneService } from './services/panne.service';
 import { EquipementService } from './services/equipement.service';
+import { EquipmentListComponent } from './compenents/login/dashboard/equipment-list/equipment-list.component';
+import { CreateEquipmentComponent } from './compenents/login/dashboard/create-equipment/create-equipment.component';
+import { TicketListComponent } from './compenents/login/dashboard/ticket-list/ticket-list.component';
+import { UserListComponent } from './compenents/login/dashboard/user-list/user-list.component';
+import { CreateUserComponent } from './compenents/login/dashboard/create-user/create-user.component';
+
+import { BreakdownListComponent } from './compenents/login/dashboard/breakdown-list/breakdown-list.component';
+import { CreateBreakdownComponent } from './compenents/login/dashboard/create-breakdown/create-breakdown.component';
 
 
 
@@ -26,7 +32,14 @@ import { EquipementService } from './services/equipement.service';
     LoginComponent,
     UserComponent,
     TechnicianComponent,
-    DashboardComponent
+    DashboardComponent,
+    EquipmentListComponent,
+    CreateEquipmentComponent,
+    TicketListComponent,
+    UserListComponent,
+    CreateUserComponent,
+    BreakdownListComponent,
+    CreateBreakdownComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +50,7 @@ import { EquipementService } from './services/equipement.service';
   ],
   providers: [
     AuthService,
-    AdminService,
     UserService,
-    TechnicianService,
     TicketDeSupportService,
     PanneService,
     EquipementService,

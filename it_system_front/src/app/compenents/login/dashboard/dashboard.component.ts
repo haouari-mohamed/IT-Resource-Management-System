@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EtatTicket } from 'src/app/model/global.model';
-import { AdminService } from 'src/app/services/admin.service';
 import { EquipementService } from 'src/app/services/equipement.service';
 import { PanneService } from 'src/app/services/panne.service';
 import { TechnicienITService } from 'src/app/services/technicien-it.service';
@@ -27,7 +26,6 @@ export class DashboardComponent implements OnInit {
   etatTicketOptions = Object.values(EtatTicket);
 
   constructor(
-    private adminService: AdminService,
     private equipementService: EquipementService,
     private panneService: PanneService,
     private technicienITService: TechnicienITService,

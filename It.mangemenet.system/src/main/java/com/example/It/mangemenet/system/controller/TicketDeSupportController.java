@@ -49,10 +49,22 @@ public class TicketDeSupportController {
         TicketDeSupport ticket = ticketDeSupportService.updateTicketDeSupport(id, updatedTicket);
         return ResponseEntity.ok(ticket);
     }
+//    @PutMapping("/technicien/{id}")
+//    public ResponseEntity<TicketDeSupport> updateTicketDeSupport(
+//            @PathVariable Long id,
+//            @RequestBody TicketDeSupport updatedTicket) {
+//        TicketDeSupport ticket = ticketDeSupportService.updateTicketDeSupport(id, updatedTicket);
+//        return ResponseEntity.ok(ticket);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTicketDeSupport(@PathVariable Long id) {
         ticketDeSupportService.deleteTicketDeSupport(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/technician/{technicianId}")
+    public ResponseEntity<List<TicketDeSupport>> getTicketsByTechnicianId(@PathVariable Long technicianId) {
+        List<TicketDeSupport> tickets = ticketDeSupportService.getTicketsByTechnicianId(technicianId);
+        return ResponseEntity.ok(tickets);
     }
 }
