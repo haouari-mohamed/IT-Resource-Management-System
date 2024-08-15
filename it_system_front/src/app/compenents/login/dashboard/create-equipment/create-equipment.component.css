@@ -1,0 +1,117 @@
+
+.create-equipment {
+    padding: 30px;
+    background: var(--light);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px; 
+    margin: 50px auto;
+
+    
+  }
+  
+  .create-equipment h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+  
+  .create-equipment form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .create-equipment div {
+    margin-bottom: 16px;
+  }
+  
+  .create-equipment label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  
+  .create-equipment input[type="text"],
+  .create-equipment input[type="date"],
+  .create-equipment textarea,
+  .create-equipment select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--grey);
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  .create-equipment textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .create-equipment button {
+    background: var(--blue);
+    color: var(--light);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .create-equipment button:hover {
+    background: var(--dark-blue);
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .create-equipment {
+      padding: 16px;
+    }
+  
+    .create-equipment h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+  
+    .create-equipment input[type="text"],
+    .create-equipment input[type="date"],
+    .create-equipment textarea,
+    .create-equipment select {
+      font-size: 13px;
+      padding: 8px;
+    }
+  
+    .create-equipment button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .create-equipment {
+      padding: 12px;
+    }
+  
+    .create-equipment h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+  
+    .create-equipment input[type="text"],
+    .create-equipment input[type="date"],
+    .create-equipment textarea,
+    .create-equipment select {
+      font-size: 12px;
+      padding: 6px;
+    }
+  
+    .create-equipment button {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }
+  

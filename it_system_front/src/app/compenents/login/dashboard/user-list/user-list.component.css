@@ -1,0 +1,97 @@
+
+
+.list {
+    padding: 30px;
+    background: var(--light);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 50px auto;
+
+  }
+  
+
+  .user-table h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    background: var(--light);
+  }
+  
+  table thead {
+    background: var(--light-blue);
+  }
+  
+  table th,
+  table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+  }
+  
+  table th {
+    font-size: 14px;
+    color: var(--dark);
+  }
+  
+  table td {
+    font-size: 16px;
+    color: var(--dark);
+  }
+  
+  table tr:nth-child(even) {
+    background: var(--grey);
+  }
+  
+
+  @media screen and (max-width: 768px) {
+    .list {
+      padding: 16px;
+    }
+  
+    .user-table h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  
+    table th, table td {
+      padding: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .list {
+      padding: 12px;
+    }
+  
+    .user-table h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+  
+    table {
+      font-size: 12px;
+    }
+  
+    table th, table td {
+      padding: 8px;
+    }
+  }
+  

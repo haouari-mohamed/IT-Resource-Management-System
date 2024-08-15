@@ -1,167 +1,56 @@
 
+<section id="sidebar">
+  <a href="#" class="brand">
+    <i class='bx bxs-smile'></i>
+    <span class="text">Admin Med</span>
+  </a>
+  <ul class="side-menu top">
+  
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/listequip">
+        <i class='bx bxs-shopping-bag-alt'></i>
+        <span class="text">Equipment List</span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/createequip">
+        <i class='bx bxs-doughnut-chart'></i>
+        <span class="text">Manage Equipment</span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/ticketlist">
+        <i class='bx bxs-shopping-bag-alt'></i>
+        <span class="text">Manage Ticket </span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/panne">
+        <i class='bx bxs-doughnut-chart'></i>
+        <span class="text">CreatePanne</span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/pannelist">
+        <i class='bx bxs-doughnut-chart'></i>
+        <span class="text">Manage Panne</span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/userlist">
+        <i class='bx bxs-doughnut-chart'></i>
+        <span class="text"> Manage User </span>
+      </a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a routerLink="/createuser">
+        <i class='bx bxs-shopping-bag-alt'></i>
+        <span class="text">Create User</span>
+      </a>
+    </li>
+    <li class="logout-button">
+      <button (click)="logout()">Logout</button>
+    </li>
 
-<!-- <div class="admin-dashboard">
-
-  <h1>Admin Dashboard</h1>
-
-  <section class="stats" *ngIf="stats">
-    <h2>Dashboard Stats</h2>
-    <p>Total Users: {{stats.totalUsers}}</p>
-    <p>Total Equipments: {{stats.totalEquipments}}</p>
-    <p>Total Tickets: {{stats.totalTickets}}</p>
-    <p>Total Breakdowns: {{stats.totalBreakdowns}}</p>
-  </section>
-
-  <section class="equipments">
-    <h2>Equipments</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let equipment of equipements">
-          <td>{{equipment.id}}</td>
-          <td>{{equipment.name}}</td>
-          <td>
-            <button (click)="deleteEquipment(equipment.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="create-equipment">
-    <h2>Create New Equipment</h2>
-    <form (ngSubmit)="createEquipment()">
-      <div>
-        <label for="equipmentName">Name:</label>
-        <input type="text" id="equipmentName" [(ngModel)]="newEquipment.name" name="name" required>
-      </div>
-      <button type="submit">Create Equipment</button>
-    </form>
-  </section>
-
-  <section class="tickets">
-    <h2>Support Tickets</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ticket of tickets">
-          <td>{{ticket.id}}</td>
-          <td>{{ticket.description}}</td>
-          <td>{{ticket.etat}}</td>
-          <td>
-            <button (click)="deleteTicket(ticket.id)">Delete</button>
-            <button (click)="selectTicketForUpdate(ticket)">Update</button>
-            <select (change)="assignTicket(ticket.id, $event)">
-              <option value="">Assign to...</option>
-              <option *ngFor="let tech of technicians" [value]="tech.id">{{tech.name}}</option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="update-ticket" *ngIf="selectedTicket">
-    <h2>Update Ticket</h2>
-    <form (ngSubmit)="updateTicket()">
-      <div>
-        <label for="description">Description:</label>
-        <input type="text" id="description" [(ngModel)]="selectedTicket.description" name="description" required>
-      </div>
-      <div>
-        <label for="status">Status:</label>
-        <select id="status" [(ngModel)]="selectedTicket.etat" name="etat" required>
-          <option *ngFor="let status of etatTicketOptions" [value]="status">
-            {{ status }}
-          </option>
-        </select>
-      </div>
-      <button type="submit">Update Ticket</button>
-    </form>
-  </section>
-
-  <section class="users">
-    <h2>Users</h2>
-    <ul>
-      <li *ngFor="let user of users">{{user.name}} - {{user.email}}</li>
-    </ul>
-  </section>
-
-  <section class="create-user">
-    <h2>Create New User</h2>
-    <form (ngSubmit)="createUser()">
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" [(ngModel)]="newUser.name" name="name" required>
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" [(ngModel)]="newUser.email" name="email" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" [(ngModel)]="newUser.password" name="password" required>
-      </div>
-      <button type="submit">Create User</button>
-    </form>
-  </section>
-
-  <section class="notifications">
-    <h2>Notifications</h2>
-    <ul>
-      <li *ngFor="let notification of notifications">{{notification.message}}</li>
-    </ul>
-  </section>
-
-  <section class="breakdowns">
-    <h2>Breakdowns</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Description</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let breakdown of breakdowns">
-          <td>{{breakdown.id}}</td>
-          <td>{{breakdown.description}}</td>
-          <td>
-            <button (click)="deletePanne(breakdown.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="create-breakdown">
-    <h2>Create New Breakdown</h2>
-    <form (ngSubmit)="createBreakdown()">
-      <div>
-        <label for="breakdownDescription">Description:</label>
-        <input type="text" id="breakdownDescription" [(ngModel)]="newBreakdown.description" name="description" required>
-      </div>
-      <div>
-        <label for="breakdownEquipment">Equipment:</label>
-        <select id="breakdownEquipment" [(ngModel)]="newBreakdown.equipmentId" name="equipmentId" required>
-          <option *ngFor="let equipment of equipements" [value]="equipment.id">{{equipment.name}}</option>
-        </select>
-      </div>
-      <button type="submit">Create Breakdown</button>
-    </form>
-  </section>
-</div> -->
+  </ul>
+</section>

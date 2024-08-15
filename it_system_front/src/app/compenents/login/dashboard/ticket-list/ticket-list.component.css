@@ -1,0 +1,188 @@
+
+
+section.tickets {
+    padding: 24px;
+    background: var(--light);
+    border-radius: 20px;
+    margin: 24px 0;
+    padding-left: 300px;
+}
+.actionp{
+    display: flex;
+    gap: 10px
+}
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  
+
+  .table-container {
+    overflow-x: auto;
+  }
+  
+ 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+    background: var(--light);
+  }
+  
+  table thead {
+    background: var(--light-blue);
+  }
+  
+  table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+    color: var(--dark);
+    border-bottom: 1px solid var(--grey);
+  }
+  
+  table tbody tr {
+    background: var(--light);
+    border-bottom: 1px solid var(--grey);
+  }
+  
+  table tbody tr:nth-child(even) {
+    background: var(--grey);
+  }
+  
+  table td {
+    padding: 12px 16px;
+    color: var(--dark);
+  }
+  
+  
+  
+ .delete{
+    background: var(--red);
+    color: var(--light);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  .update{
+        background: rgba(0, 145, 255, 0.801);
+        color: var(--light);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s ease;
+      }
+
+  
+  table td button:hover {
+    background: var(--dark-red);
+  }
+  
+
+  select {
+    padding: 8px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .popup-content h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  
+  textarea, select, input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+  }
+
+  
+  textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  button[type="submit"] {
+    background-color: #28a745; 
+    color: var(--light);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  button[type="button"] {
+    background-color: #6c757d; 
+    color: var(--light);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    margin-left: 10px;
+    margin-top: 10px;
+    
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+ 
+  @media screen and (max-width: 768px) {
+    section.tickets {
+      padding: 16px;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    table {
+      font-size: 12px;
+    }
+  
+    table th, table td {
+      padding: 8px 12px;
+    }
+  }
+  

@@ -47,6 +47,7 @@ public class TicketDeSupportController {
             @PathVariable Long id,
             @RequestBody TicketDeSupport updatedTicket) {
         TicketDeSupport ticket = ticketDeSupportService.updateTicketDeSupport(id, updatedTicket);
+        System.out.println("updddddddddddddddddddddddddate");
         return ResponseEntity.ok(ticket);
     }
 //    @PutMapping("/technicien/{id}")

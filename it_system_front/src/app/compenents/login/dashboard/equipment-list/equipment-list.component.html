@@ -1,27 +1,30 @@
+<app-dashboard></app-dashboard>
 <section class="equipments">
   <h2>Equipments</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>State</th>
-        <th>Acquisition Date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let equipment of equipements">
-        <td>{{equipment.id}}</td>
-        <td>{{equipment.nom}}</td>
-        <td>{{equipment.description}}</td>
-        <td>{{equipment.etat}}</td>
-        <td>{{equipment.dateAcquisition | date}}</td>
-        <td>
-          <button (click)="deleteEquipment(equipment.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>State</th>
+          <th>Acquisition Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of equipements">
+          <td>{{ equipment.id }}</td>
+          <td>{{ equipment.nom }}</td>
+          <td>{{ equipment.description }}</td>
+          <td>{{ equipment.etat }}</td>
+          <td>{{ equipment.dateAcquisition | date }}</td>
+          <td>
+            <button (click)="deleteEquipment(equipment.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   loadUsers(): void {
     this.userService.getAllUtilisateurs().subscribe(
       data => this.users = data,
-      error => console.error('Error fetching users:', error)
+  
     );
   }
 }

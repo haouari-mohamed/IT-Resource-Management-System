@@ -1,9 +1,10 @@
+<app-dashboard></app-dashboard>
 <div class="create-user">
   <h2>Create New User</h2>
   <form (ngSubmit)="createUser()">
     <div>
       <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="newUser.name" name="name" required>
+      <input type="text" id="name" [(ngModel)]="newUser.username" name="name" required>
     </div>
     <div>
       <label for="email">Email:</label>
@@ -13,6 +14,6 @@
       <label for="password">Password:</label>
       <input type="password" id="password" [(ngModel)]="newUser.password" name="password" required>
     </div>
-    <button type="submit">Create User</button>
+    <button class="button" type="submit">Create User</button>
   </form>
 </div>

@@ -1,4 +1,6 @@
-<div class="create-breakdown">
+<app-dashboard></app-dashboard>
+
+  <div class="create-breakdown">
     <h2>Create New Breakdown</h2>
     <form (ngSubmit)="createBreakdown()">
       <div>
@@ -21,7 +23,7 @@
           required>
       </div>
   
-      <div>
+     <!--  <div>
         <label for="resolu">Resolved:</label>
         <input 
           type="checkbox" 
@@ -29,7 +31,7 @@
           [(ngModel)]="newBreakdown.resolu" 
           name="resolu">
       </div>
-  
+   -->
       <div>
         <label for="equipement">Equipment:</label>
         <select 
@@ -45,5 +47,5 @@
   
       <button type="submit">Create Breakdown</button>
     </form>
-  </div>
-  
+
+</div>

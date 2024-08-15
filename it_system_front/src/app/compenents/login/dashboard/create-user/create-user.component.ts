@@ -18,7 +18,7 @@ export class CreateUserComponent {
       () => {
         this.newUser = {};
       },
-      error => console.error('Error creating user:', error)
+    
     );console.log(this.newUser)
   }
 }

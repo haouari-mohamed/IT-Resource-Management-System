@@ -1,4 +1,4 @@
-<!-- ticket-list.component.html -->
+<app-dashboard></app-dashboard>
 <section class="tickets">
   <h2>Support Tickets</h2>
   <table>
@@ -21,11 +21,13 @@
         <td>{{ticket.etat}}</td>
         <td>{{ticket.dateCreation | date}}</td>
         <td>{{ticket.dateResolution | date}}</td>
+        <td>{{ticket.utilisateur.username}}</td>
        <!--  <td>{{ticket.utilisateur.username || 'N/A'}}</td> -->
-        <td>{{ticket.technicien?.username || 'Not assigned'}}</td>
-        <td>
-          <button (click)="deleteTicket(ticket.id)">Delete</button>
-          <button (click)="openUpdatePopup(ticket)">Update</button>
+        <td>{{ticket.technicien?.username}}</td>
+        <td class="actionp">
+          <button class="delete"(click)="deleteTicket(ticket.id)">Delete</button>
+          <button class="update" (click)="openUpdatePopup(ticket)">Update</button>
+         
           <select (change)="assignTicket(ticket.id, $event)">
             <option value="">Assign to...</option>
             <option *ngFor="let tech of technicians" [value]="tech.id">{{tech.username}}</option>
@@ -36,7 +38,7 @@
   </table>
 </section>
 
-<!-- Update Popup -->
+
 <div class="popup" *ngIf="showUpdatePopup && selectedTicket">
   <div class="popup-content">
     <h2>Update Ticket</h2>

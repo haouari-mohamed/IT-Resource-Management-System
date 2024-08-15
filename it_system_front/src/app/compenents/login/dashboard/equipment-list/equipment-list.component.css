@@ -1,0 +1,88 @@
+
+.equipments {
+    padding: 50px;
+    background: var(--light);
+    border-radius: 20px;
+    margin: 24px 0;
+    padding-left: 300px;
+  }
+  
+  .equipments h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+  }
+  
+  table thead {
+    background: var(--light-blue);
+  }
+  
+  table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+    color: var(--dark);
+    border-bottom: 1px solid var(--grey);
+  }
+  
+  table tbody tr {
+    background: var(--light);
+    border-bottom: 1px solid var(--grey);
+  }
+  
+  table tbody tr:nth-child(even) {
+    background: var(--grey);
+  }
+  
+  table td {
+    padding: 12px 16px;
+    color: var(--dark);
+  }
+  
+  table td button {
+    background: var(--red);
+    color: var(--light);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  table td button:hover {
+    background: var(--dark-red);
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .equipments {
+      padding: 16px;
+    }
+    
+    table {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    table {
+      font-size: 12px;
+    }
+  
+    table th, table td {
+      padding: 8px 12px;
+    }
+  }
+  
