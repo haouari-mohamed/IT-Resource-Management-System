@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EtatTicket } from 'src/app/model/global.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { TechnicienITService } from 'src/app/services/technicien-it.service';
 import { TicketDeSupportService } from 'src/app/services/ticket-de-support.service';
 
@@ -15,11 +17,18 @@ export class TechnicianComponent implements OnInit {
 
   constructor(
     private ticketDeSupportService: TicketDeSupportService,
-    private technicianService: TechnicienITService
+    private technicianService: TechnicienITService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loadAssignedTickets();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']); 
   }
 
   loadAssignedTickets(): void {
@@ -35,10 +44,10 @@ export class TechnicianComponent implements OnInit {
       updatedTicket.etat = newStatus;
       this.ticketDeSupportService.updateTicket(ticketId, updatedTicket).subscribe(
         () => {
-          console.log('Ticket status updated successfully');
+          console.log('Ticket updated succes');
           this.loadAssignedTickets(); 
         },
-        error => console.error('Error updating ticket status:', error)
+        
       );
     }
   }

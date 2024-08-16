@@ -7,6 +7,8 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Description</th>
+          <th scope="col">Equipement</th>
+
           <th scope="col">Date</th>
         
           <th scope="col">Actions</th>
@@ -16,6 +18,7 @@
         <tr *ngFor="let breakdown of breakdowns">
           <td>{{breakdown.id}}</td>
           <td>{{breakdown.description}}</td>
+          <td>{{breakdown.equipement.description}}</td>
           <td>{{breakdown.datePanne | date:'shortDate'}}</td>
           <!-- <td>
             <span class="badge" [ngClass]="{'badge-success': breakdown.resolu, 'badge-danger': !breakdown.resolu}">

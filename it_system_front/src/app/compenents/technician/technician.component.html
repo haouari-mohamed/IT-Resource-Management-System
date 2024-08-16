@@ -1,30 +1,41 @@
+<nav class="navbar">
+  <div class="navbar-logo">
+    <img src="https://w.wallhaven.cc/full/gj/wallhaven-gj7dm7.jpg" alt="Company Logo">
+  </div>
+  
+    <button class="logoutbtn" (click)="logout()" >Logout</button>
+  
+</nav>
 
-  <section class="assigned-tickets" *ngIf="currentTechnicianId">
-    <h2>Assigned Tickets</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ticket of assignedTickets">
-          <td>{{ticket.id}}</td>
-          <td>{{ticket.description}}</td>
-          <td>{{ticket.etat}}</td>
-          <td>
-            <select (change)="onStatusChange($event, ticket.id)">
-              <option value="">Change status...</option>
-              <option *ngFor="let status of etatTicketOptions" [value]="status" [selected]="status === ticket.etat">
-                {{status}}
-              </option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
+<section class="assigned-tickets" *ngIf="currentTechnicianId">
+  <h2>Assigned Tickets</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of assignedTickets">
+        <td>{{ticket.id}}</td>
+        <td>{{ticket.description}}</td>
+        <td>
+          <span class="status-badge" [ngClass]="ticket.etat.toLowerCase()">
+            {{ticket.etat}}
+          </span>
+        </td>
+        <td>
+          <select (change)="onStatusChange($event, ticket.id)" class="status-select">
+            <option value="">Change status...</option>
+            <option *ngFor="let status of etatTicketOptions" [value]="status" [selected]="status === ticket.etat">
+              {{status}}
+            </option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

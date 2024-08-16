@@ -1,4 +1,4 @@
-// ticket-list.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { TicketDeSupportService } from 'src/app/services/ticket-de-support.service';
 import { TechnicienITService } from 'src/app/services/technicien-it.service';

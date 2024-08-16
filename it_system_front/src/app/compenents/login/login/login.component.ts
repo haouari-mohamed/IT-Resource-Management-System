@@ -31,14 +31,14 @@ export class LoginComponent {
             console.log("Navigating to user");
             break;
           case 'ADMIN':
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/listequip']);
             /* this.router.navigate(['/listequip']) */
            /*  this.router.navigate(['/createequip']), */
            /* this.router.navigate(['/ticketlist']) */
            /* this.router.navigate(['/panne']) */
           /*  this.router.navigate(['/pannelist']) */
-       /*    this.router.navigate(['/userlist']) */
-/*        this.router.navigate(['/ticketlist']) */
+          /*    this.router.navigate(['/userlist']) */
+         /*        this.router.navigate(['/ticketlist']) */
             console.log("Navigating to admin dashboard");
             break;
           default:
